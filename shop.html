@@ -5,36 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OnePure – Shop</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* ===== Shop-specifik CSS ===== */
+
+/* ===== Header ===== */
+header { background: #fff; padding: 20px 0; text-align: center; position: sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+header h1 { font-size: 2.5em; color: #1a1a1a; margin-bottom:5px;}
+nav a { margin:0 15px; font-weight:500; color:#1a1a1a; transition:0.3s;}
+nav a:hover, nav a.active-link { color:#ffcc33;}
+
+/* ===== Hero ===== */
+.hero { height:25vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#fff,#f0f0f0); text-align:center;}
+.hero h2 { font-size:2em; color:#1a1a1a;}
+
+/* ===== Filters & Search ===== */
+.filters { max-width:1200px; margin:30px auto; display:flex; justify-content:space-between; align-items:center; gap:15px; padding:0 20px; flex-wrap:wrap;}
+.filters input, .filters select { padding:10px; border-radius:8px; border:1px solid #ccc; font-size:1em; width:100%; max-width:250px;}
+
+/* ===== Produktgrid ===== */
+.products-grid { max-width:1200px; margin:20px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; padding:0 20px; }
+.product-card { background:#fff; border-radius:15px; padding:15px; text-align:center; box-shadow:0 2px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.product-card:hover { transform:translateY(-5px); box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+.product-card img { width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px; transition: transform 0.3s;}
+.product-card img:hover { transform:scale(1.05);}
+.product-card h3 { font-size:1.3em; color:#1a1a1a; margin-bottom:5px;}
+.product-card p { color:#555; margin-bottom:8px;}
+.buy-button { padding:10px 20px; background: linear-gradient(45deg,#ffcc33,#ffb347); color:#1a1a1a; font-weight:bold; border-radius:5px; transition: all 0.3s; }
+.buy-button:hover { transform:scale(1.05); box-shadow:0 0 10px rgba(255,204,51,0.5); }
+
+/* ===== Carousel (Rekommenderade produkter) ===== */
+.carousel-section { max-width:1200px; margin:50px auto; overflow:hidden; position:relative; }
+.carousel-wrapper { display:flex; gap:20px; transition: all 0.3s ease; }
+.carousel-card { min-width:220px; background:#fff; border-radius:15px; padding:15px; text-align:center; box-shadow:0 2px 15px rgba(0,0,0,0.1); flex-shrink:0; }
+.carousel-card img { width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px; transition: transform 0.3s;}
+.carousel-card img:hover { transform:scale(1.05);}
+.carousel-card h3 { font-size:1.2em; color:#1a1a1a; margin-bottom:5px;}
+.carousel-card p { color:#555; margin-bottom:8px;}
+.buy-button-carousel { padding:8px 15px; background:#ffcc33; border-radius:5px; font-weight:bold; transition: all 0.3s;}
+.buy-button-carousel:hover { transform:scale(1.05); box-shadow:0 0 10px rgba(255,204,51,0.5); }
+
+/* ===== Footer ===== */
+footer { background:#f0f0f0; text-align:center; padding:20px; margin-top:50px; color:#555; font-size:0.9em; }
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .filters{flex-direction:column; align-items:flex-start;}
+  .products-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px;}
+  .carousel-wrapper{gap:15px;}
+}
+</style>
 </head>
 <body>
 
-<!-- ===== Header ===== -->
 <header>
-  <div class="logo">OnePure</div>
+  <h1>OnePure Shop</h1>
   <nav>
     <a href="index.html">Hem</a>
-    <a href="shop.html" class="active">Shop</a>
-    <a href="omoss.html">Om oss</a>
-    <a href="kontakt.html">Kontakt</a>
+    <a href="shop.html" class="active-link">Shop</a>
+    <a href="#contact">Kontakt</a>
   </nav>
 </header>
 
-<!-- ===== Hero ===== -->
-<section class="hero hero-shop">
-  <div class="hero-text">
-    <h1>Utforska vårt sortiment</h1>
-    <p>Serum, krämer, oljor och mer – handplockade för din hud</p>
-  </div>
+<section class="hero">
+  <h2>Utforska vårt fullständiga sortiment</h2>
 </section>
 
-<!-- ===== Filter & Sök ===== -->
-<div class="filters" id="filters">
+<!-- Filters -->
+<div class="filters">
   <input type="text" id="search" placeholder="Sök produkter...">
   <select id="category">
     <option value="">Alla kategorier</option>
     <option value="serum">Serum</option>
     <option value="cream">Cream</option>
-    <option value="oil">Olja</option>
+    <option value="oil">Oljor</option>
   </select>
   <select id="price">
     <option value="">Alla priser</option>
@@ -44,87 +87,99 @@
   </select>
 </div>
 
-<!-- ===== Produktgrid ===== -->
+<!-- Carousel Rekommenderade produkter -->
+<section class="carousel-section">
+  <div class="carousel-wrapper" id="carousel">
+    <!-- 10 exempel produkter -->
+    <div class="carousel-card"><img src="bilder/glow-serum.jpg" alt="Glow Serum"><h3>Glow Serum</h3><p>Ger huden lyster</p><button class="buy-button-carousel">Köp</button></div>
+    <div class="carousel-card"><img src="bilder/the-niacinamide-15-serum-cosrx-official-3_2048x.webp" alt="Niacinamide"><h3>Niacinamide Serum</h3><p>Reducerar rodnad</p><button class="buy-button-carousel">Köp</button></div>
+    <div class="carousel-card"><img src="bilder/fukt-cream.jpg" alt="Fukt Cream"><h3>Fukt Cream</h3><p>Djupt återfuktande</p><button class="buy-button-carousel">Köp</button></div>
+    <div class="carousel-card"><img src="bilder/vitamin-c.jpg" alt="Vitamin C"><h3>Vitamin C Serum</h3><p>Ljusar upp huden</p><button class="buy-button-carousel">Köp</button></div>
+    <div class="carousel-card"><img src="bilder/retinol.jpg" alt="Retinol"><h3>Retinol Cream</h3><p>Reducerar linjer</p><button class="buy-button-carousel">Köp</button></div>
+  </div>
+</section>
+
+<!-- Produktgrid -->
 <section class="products-grid" id="products">
-  <!-- Exempelprodukter 20+ -->
+  <!-- 20 exempel produkter -->
   <div class="product-card" data-category="serum" data-price="199">
-    <img src="images/product1.jpg" alt="Niacinamide Serum">
+    <img src="bilder/the-niacinamide-15-serum-cosrx-official-3_2048x.webp" alt="Niacinamide Serum">
     <h3>Niacinamide Serum</h3>
     <p>Reducerar rodnad och ger klar hud</p>
     <p><strong>Pris:</strong> 199 kr</p>
     <button class="buy-button">Köp</button>
   </div>
-  <div class="product-card" data-category="serum" data-price="249">
-    <img src="images/product2.jpg" alt="Glow Serum">
-    <h3>Glow Serum</h3>
-    <p>Ger huden lyster</p>
-    <p><strong>Pris:</strong> 249 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
   <div class="product-card" data-category="cream" data-price="179">
-    <img src="images/product3.jpg" alt="Fuktgivande Cream">
+    <img src="bilder/fukt-cream.jpg" alt="Fukt Cream">
     <h3>Fuktgivande Cream</h3>
     <p>Djupt återfuktande</p>
     <p><strong>Pris:</strong> 179 kr</p>
     <button class="buy-button">Köp</button>
   </div>
-  <div class="product-card" data-category="serum" data-price="209">
-    <img src="images/product4.jpg" alt="Vitamin C Serum">
-    <h3>Vitamin C Serum</h3>
-    <p>Ljusar upp huden</p>
-    <p><strong>Pris:</strong> 209 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <div class="product-card" data-category="cream" data-price="299">
-    <img src="images/product5.jpg" alt="Retinol Cream">
-    <h3>Retinol Cream</h3>
-    <p>Reducerar linjer</p>
-    <p><strong>Pris:</strong> 299 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <div class="product-card" data-category="serum" data-price="159">
-    <img src="images/product6.jpg" alt="Hydrating Serum">
-    <h3>Hydrating Serum</h3>
-    <p>Ger huden fukt</p>
-    <p><strong>Pris:</strong> 159 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <div class="product-card" data-category="cream" data-price="189">
-    <img src="images/product7.jpg" alt="Revitalizing Cream">
-    <h3>Revitalizing Cream</h3>
-    <p>Skyddar huden</p>
-    <p><strong>Pris:</strong> 189 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <div class="product-card" data-category="oil" data-price="210">
-    <img src="images/product8.jpg" alt="Nourishing Oil">
-    <h3>Nourishing Oil</h3>
-    <p>Mjukgör huden</p>
-    <p><strong>Pris:</strong> 210 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <div class="product-card" data-category="cream" data-price="250">
-    <img src="images/product9.jpg" alt="Brightening Cream">
-    <h3>Brightening Cream</h3>
-    <p>Jämnar ut ton</p>
-    <p><strong>Pris:</strong> 250 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <div class="product-card" data-category="serum" data-price="220">
-    <img src="images/product10.jpg" alt="Vitamin E Serum">
-    <h3>Vitamin E Serum</h3>
-    <p>För hudens lyster</p>
-    <p><strong>Pris:</strong> 220 kr</p>
-    <button class="buy-button">Köp</button>
-  </div>
-  <!-- Kopiera liknande för fler produkter upp till minst 50 -->
+  <!-- ... kopiera upp till 20 produkter -->
 </section>
 
-<!-- ===== Footer ===== -->
-<footer>
+<footer id="contact">
   <p>© 2025 OnePure | <a href="mailto:OnePureCosmetics@gmail.com">OnePureCosmetics@gmail.com</a></p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+console.log("Shop JS loaded!");
+
+// Sökfunktion
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', function(){
+  const query = this.value.toLowerCase();
+  const products = document.querySelectorAll('.product-card');
+  products.forEach(card => {
+    const name = card.querySelector('h3').textContent.toLowerCase();
+    if(name.includes(query)) { card.style.display='block'; }
+    else { card.style.display='none'; }
+  });
+});
+
+// Filterfunktion
+const categorySelect = document.getElementById('category');
+const priceSelect = document.getElementById('price');
+
+function filterProducts() {
+  const category = categorySelect.value;
+  const price = priceSelect.value;
+  const products = document.querySelectorAll('.product-card');
+  products.forEach(card => {
+    const cat = card.getAttribute('data-category');
+    const pr = parseInt(card.getAttribute('data-price'));
+    let show = true;
+    if(category && cat !== category) show=false;
+    if(price) {
+      if(price==='0-199' && pr>199) show=false;
+      if(price==='200-299' && (pr<200||pr>299)) show=false;
+      if(price==='300+' && pr<300) show=false;
+    }
+    card.style.display = show?'block':'none';
+  });
+}
+
+categorySelect.addEventListener('change', filterProducts);
+priceSelect.addEventListener('change', filterProducts);
+
+// Carousel auto-scroll
+const carousel = document.getElementById('carousel');
+let scrollAmount = 0;
+const scrollStep = 1;
+let animationFrameId;
+
+function autoScroll() {
+  scrollAmount += scrollStep;
+  if(scrollAmount >= carousel.scrollWidth / 2) scrollAmount = 0;
+  carousel.scrollLeft = scrollAmount;
+  animationFrameId = requestAnimationFrame(autoScroll);
+}
+
+autoScroll();
+carousel.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrameId));
+carousel.addEventListener('mouseleave', () => autoScroll());
+</script>
+
 </body>
 </html>
