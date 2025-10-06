@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OnePure Shop</title>
+<style>
+  /* ===== Global ===== */
+  * { box-sizing:border-box; margin:0; padding:0; font-family:'Poppins', sans-serif; }
+  body { background:#fafafa; color:#111; line-height:1.6; scroll-behavior:smooth; }
+  a { text-decoration:none; color:inherit; }
+
+  /* ===== Header ===== */
+  header { background:#fff; padding:20px 0; text-align:center; position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+  header h1 { font-size:2em; color:#111; margin-bottom:5px; }
+  nav a { margin:0 15px; font-weight:500; color:#111; transition:0.3s; }
+  nav a:hover { color:#ffcc33; }
+
+  /* ===== Hero ===== */
+  .hero { height:25vh; display:flex; justify-content:center; align-items:center; text-align:center; background: linear-gradient(135deg,#fff 0%,#f5f5f5 100%); }
+  .hero h2 { font-size:2em; color:#111; }
+
+  /* ===== Filter & Sök ===== */
+  .filters { max-width:1200px; margin:30px auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:15px; padding:0 20px; }
+  .filters input, .filters select { padding:10px; border-radius:8px; border:1px solid #ccc; font-size:1em; width:100%; max-width:250px; }
+
+  /* ===== Produkter Grid ===== */
+  .products-grid { max-width:1200px; margin:20px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; padding:0 20px; }
+  .product-card { background:#fff; border-radius:15px; padding:15px; text-align:center; box-shadow:0 2px 15px rgba(0,0,0,0.05); transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+  .product-card:hover { transform:translateY(-5px); box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+  .product-card img { width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:12px; transition:transform 0.3s; }
+  .product-card img:hover { transform: scale(1.05); }
+  .product-card h3 { font-size:1.2em; color:#111; margin-bottom:5px; }
+  .product-card p { color:#555; margin-bottom:8px; }
+  .buy-button { padding:10px 20px; background:linear-gradient(45deg,#ffcc33,#ffb347); color:#111; font-weight:bold; border-radius:5px; transition:all 0.3s; }
+  .buy-button:hover { transform:scale(1.05); box-shadow:0 0 10px rgba(255,204,51,0.5); }
+
+  /* ===== Footer ===== */
+  footer { background:#f5f5f5; text-align:center; padding:20px; margin-top:50px; color:#555; font-size:0.9em; }
+
+  /* ===== Responsive ===== */
+  @media(max-width:768px){
+    .filters { flex-direction:column; align-items:flex-start; }
+    .products-grid { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OnePure Shop</h1>
+  <nav>
+    <a href="index.html">Hem</a>
+    <a href="#filters">Shop</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Upptäck hela vårt sortiment</h2>
+</section>
+
+<!-- Filter & Sök -->
+<div class="filters" id="filters">
+  <input type="text" id="search" placeholder="Sök produkter...">
+  <select id="category">
+    <option value="">Alla kategorier</option>
+    <option value="serum">Serum</option>
+    <option value="cream">Cream</option>
+    <option value="oil">Oljor</option>
+  </select>
+  <select id="price">
+    <option value="">Alla priser</option>
+    <option value="0-199">0-199 kr</option>
+    <option value="200-299">200-299 kr</option>
+    <option value="300+">300+ kr</option>
+  </select>
+</div>
+
+<!-- Produktgrid -->
+<section class="products-grid" id="products">
+  <!-- 20 produkt-exempel -->
+  <div class="product-card" data-category="serum" data-price="199">
+    <img src="bilder/product1.jpg" alt="Niacinamide Serum">
+    <h3>Niacinamide Serum</h3>
+    <p>Reducerar rodnad och ger klar hud</p>
+    <p><strong>Pris:</strong> 199 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="serum" data-price="249">
+    <img src="bilder/product2.jpg" alt="Glow Serum">
+    <h3>Glow Serum</h3>
+    <p>Ger huden lyster</p>
+    <p><strong>Pris:</strong> 249 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="cream" data-price="179">
+    <img src="bilder/product3.jpg" alt="Fukt Cream">
+    <h3>Fuktgivande Cream</h3>
+    <p>Djupt återfuktande</p>
+    <p><strong>Pris:</strong> 179 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <!-- fortsätt upp till 20 produkter med data-category och data-price -->
+</section>
+
+<footer id="contact">
+  <p>© 2025 OnePure | <a href="mailto:OnePureCosmetics@gmail.com">OnePureCosmetics@gmail.com</a></p>
+</footer>
+
+<script>
+  console.log("OnePure Shop loaded!");
+
+  // Sök-funktion
+  const searchInput = document.getElementById('search');
+  searchInput.addEventListener('input', function(){
+    const query = this.value.toLowerCase();
+    const products = document.querySelectorAll('.product-card');
+    products.forEach(card => {
+      const name = card.querySelector('h3').textContent.toLowerCase();
+      card.style.display = name.includes(query) ? 'block' : 'none';
+    });
+  });
+
+  // Filter-funktion
+  const categorySelect = document.getElementById('category');
+  const priceSelect = document.getElementById('price');
+
+  function filterProducts() {
+    const category = categorySelect.value;
+    const priceRange = priceSelect.value;
+    const products = document.querySelectorAll('.product-card');
+
+    products.forEach(card => {
+      const cardCategory = card.getAttribute('data-category');
+      const cardPrice = parseInt(card.getAttribute('data-price'));
+      let show = true;
+
+      if(category && cardCategory !== category) show = false;
+      if(priceRange){
+        const [min,max] = priceRange.split('-');
+        if(max && (cardPrice < parseInt(min) || cardPrice > parseInt(max))) show = false;
+        if(!max && cardPrice < parseInt(min)) show = false;
+      }
+
+      card.style.display = show ? 'block' : 'none';
+    });
+  }
+
+  categorySelect.addEventListener('change', filterProducts);
+  priceSelect.addEventListener('change', filterProducts);
+</script>
+
+</body>
+</html>
