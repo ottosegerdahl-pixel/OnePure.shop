@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OnePure – Shop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="logo">OnePure</div>
+  <nav>
+    <a href="index.html">Hem</a>
+    <a href="shop.html" class="active">Shop</a>
+    <a href="omoss.html">Om oss</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero hero-shop">
+  <div class="hero-text">
+    <h1>Utforska vårt sortiment</h1>
+    <p>Serum, krämer, oljor och mer – handplockade för din hud</p>
+  </div>
+</section>
+
+<!-- ===== Filter & Sök ===== -->
+<div class="filters" id="filters">
+  <input type="text" id="search" placeholder="Sök produkter...">
+  <select id="category">
+    <option value="">Alla kategorier</option>
+    <option value="serum">Serum</option>
+    <option value="cream">Cream</option>
+    <option value="oil">Olja</option>
+  </select>
+  <select id="price">
+    <option value="">Alla priser</option>
+    <option value="0-199">0-199 kr</option>
+    <option value="200-299">200-299 kr</option>
+    <option value="300+">300+ kr</option>
+  </select>
+</div>
+
+<!-- ===== Produktgrid ===== -->
+<section class="products-grid" id="products">
+  <!-- Exempelprodukter 20+ -->
+  <div class="product-card" data-category="serum" data-price="199">
+    <img src="images/product1.jpg" alt="Niacinamide Serum">
+    <h3>Niacinamide Serum</h3>
+    <p>Reducerar rodnad och ger klar hud</p>
+    <p><strong>Pris:</strong> 199 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="serum" data-price="249">
+    <img src="images/product2.jpg" alt="Glow Serum">
+    <h3>Glow Serum</h3>
+    <p>Ger huden lyster</p>
+    <p><strong>Pris:</strong> 249 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="cream" data-price="179">
+    <img src="images/product3.jpg" alt="Fuktgivande Cream">
+    <h3>Fuktgivande Cream</h3>
+    <p>Djupt återfuktande</p>
+    <p><strong>Pris:</strong> 179 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="serum" data-price="209">
+    <img src="images/product4.jpg" alt="Vitamin C Serum">
+    <h3>Vitamin C Serum</h3>
+    <p>Ljusar upp huden</p>
+    <p><strong>Pris:</strong> 209 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="cream" data-price="299">
+    <img src="images/product5.jpg" alt="Retinol Cream">
+    <h3>Retinol Cream</h3>
+    <p>Reducerar linjer</p>
+    <p><strong>Pris:</strong> 299 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="serum" data-price="159">
+    <img src="images/product6.jpg" alt="Hydrating Serum">
+    <h3>Hydrating Serum</h3>
+    <p>Ger huden fukt</p>
+    <p><strong>Pris:</strong> 159 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="cream" data-price="189">
+    <img src="images/product7.jpg" alt="Revitalizing Cream">
+    <h3>Revitalizing Cream</h3>
+    <p>Skyddar huden</p>
+    <p><strong>Pris:</strong> 189 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="oil" data-price="210">
+    <img src="images/product8.jpg" alt="Nourishing Oil">
+    <h3>Nourishing Oil</h3>
+    <p>Mjukgör huden</p>
+    <p><strong>Pris:</strong> 210 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="cream" data-price="250">
+    <img src="images/product9.jpg" alt="Brightening Cream">
+    <h3>Brightening Cream</h3>
+    <p>Jämnar ut ton</p>
+    <p><strong>Pris:</strong> 250 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <div class="product-card" data-category="serum" data-price="220">
+    <img src="images/product10.jpg" alt="Vitamin E Serum">
+    <h3>Vitamin E Serum</h3>
+    <p>För hudens lyster</p>
+    <p><strong>Pris:</strong> 220 kr</p>
+    <button class="buy-button">Köp</button>
+  </div>
+  <!-- Kopiera liknande för fler produkter upp till minst 50 -->
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <p>© 2025 OnePure | <a href="mailto:OnePureCosmetics@gmail.com">OnePureCosmetics@gmail.com</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
